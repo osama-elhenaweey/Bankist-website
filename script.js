@@ -64,3 +64,32 @@ document.querySelector(".nav__links").addEventListener("click", function (e) {
         document.querySelector(id).scrollIntoView({ behavior: "smooth" });
     }
 });
+
+// tabbed component
+const tabs = document.querySelectorAll(".operations__tab");
+const tabsContent = document.querySelectorAll(".operations__content");
+const tabsContainer = document.querySelector(".operations__tab-container");
+
+tabsContainer.addEventListener("click", function (e) {
+    // if you clicked in anywhere in the button
+    const clicked = e.target.closest(".operations__tab");
+    // you clicked outside the button so it will be false and return and break out the scope
+    if (!clicked) return;
+    // remove all the active class form all button RESET
+    tabs.forEach((e) => e.classList.remove("operations__tab--active"));
+    // add the active to the button clicked
+    clicked.classList.add("operations__tab--active");
+
+    // content
+
+    // remove all the content
+    tabsContent.forEach((c) =>
+        c.classList.remove("operations__content--active")
+    );
+
+    // select the content with the same button data set number and show its content
+    const o = clicked.dataset.tab;
+    document
+        .querySelector(`.operations__content--${o}`)
+        .classList.add("operations__content--active");
+});
