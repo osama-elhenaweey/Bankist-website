@@ -139,3 +139,26 @@ nav.addEventListener("mouseout", function (e) {
     // }
     navfun(e, 1);
 });
+
+// sticky navbar
+
+// easy way ## my way
+// window.addEventListener("scroll", function () {
+//     nav.classList.remove("sticky");
+//     if (window.scrollY > 410) {
+//         nav.classList.add("sticky");
+//     }
+// });
+
+// hard way
+
+const initialCoords = section1.getBoundingClientRect();
+
+window.addEventListener("scroll", function () {
+    nav.classList.remove("sticky");
+    if (window.scrollY > initialCoords.top) {
+        nav.classList.add("sticky");
+    } else {
+        nav.classList.remove("sticky");
+    }
+});
